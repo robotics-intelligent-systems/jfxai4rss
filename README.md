@@ -1,8 +1,44 @@
 # AI-Powered Robotic Surgery Simulation Platform
 
-> **Consolidated English project description and proposed open-source AI integration architecture.**
+> **Consolidated English project description, combined dual-degree curriculum integration, and proposed open-source AI integration architecture.**
 >
 > This repository is an MBSE-oriented design baseline for robotic-surgery simulation, medical imaging, physiology, biomechanics, and digital-engineering research. The AI architecture in this document is a proposal: it separates the artefacts that already exist in the repository from integrations that still require implementation, verification, and domain review.
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Project Status and Scope](#project-status-and-scope)
+- [Engineering Objectives](#engineering-objectives)
+- [Combined Dual-Degree Curriculum Architecture](#combined-dual-degree-curriculum-architecture)
+  - [Phase 1: Common Trunk and Biomedical Innovation](#phase-1-common-trunk-and-biomedical-innovation-semesters-14)
+  - [Phase 2: Clinical-Technical Medical Training](#phase-2-clinical-technical-medical-training-semesters-510)
+  - [Phase 3: Clinical Medicine and Biomedical Internship](#phase-3-clinical-medicine-and-biomedical-internship-semesters-1114)
+  - [Phase 4: Advanced Specialisation in Paediatric and Adolescent Gynaecology](#phase-4-advanced-specialisation-in-paediatric-and-adolescent-gynaecology-semesters-1518)
+  - [Graduate Profile and Core Competencies](#graduate-profile-and-core-competencies)
+- [Proposed AI Integration Architecture](#proposed-ai-integration-architecture)
+  - [Layer Responsibilities](#layer-responsibilities)
+  - [Safe Decision-Support Sequence](#safe-decision-support-sequence)
+- [Code-Level Integration Contract](#code-level-integration-contract)
+  - [Event and Data Contracts](#event-and-data-contracts)
+- [AI Capability Profiles](#ai-capability-profiles)
+- [Open-Source Technology Compendium](#open-source-technology-compendium)
+  - [Surgical Robotics and Simulation Candidates](#surgical-robotics-and-simulation-candidates)
+  - [Physiology, Biomechanics and Engineering Models](#physiology-biomechanics-and-engineering-models)
+  - [Imaging, Vision and Learning Candidates](#imaging-vision-and-learning-candidates)
+  - [Knowledge, Agents and Operations Candidates](#knowledge-agents-and-operations-candidates)
+  - [Interoperability and Data Standards](#interoperability-and-data-standards)
+- [Existing MBSE/CAS Assets](#existing-mbsecas-assets)
+- [Proposed Repository Structure](#proposed-repository-structure)
+- [Security, Privacy and Responsible AI](#security-privacy-and-responsible-ai)
+- [Installation and Reproducibility (Current Baseline)](#installation-and-reproducibility-current-baseline)
+- [Verification Strategy](#verification-strategy)
+- [Roadmap](#roadmap)
+- [Contribution Guidelines](#contribution-guidelines)
+- [Disclaimer](#disclaimer)
+- [Licensing and Provenance](#licensing-and-provenance)
+- [Source References](#source-references)
+
+---
 
 ## Overview
 
@@ -30,6 +66,46 @@ The proposed AI layer provides decision support for simulation and engineering t
 5. **Protect sensitive data.** Use de-identified or synthetic data by default, limit prompt payloads, encrypt data in transit and at rest, and record access decisions.
 6. **Produce evidence, not only prose.** Store model versions, prompts or prompt hashes, retrieved sources, tool calls, simulator seeds, metrics, reviewer decisions and provenance.
 7. **Keep the compendium modular.** Each upstream project is an optional candidate until its API, licence, maintenance status, performance and safety impact have been verified.
+
+## Combined Dual-Degree Curriculum Architecture
+
+To support the interdisciplinary requirements of high-precision robotic surgery, pediatric bio-instrumentation, and specialized medical practice, this project embeds an integrated academic curriculum combining **Biomedical Engineering** and **Human Medicine with Specialisation in Paediatric and Adolescent Gynaecology**.
+
+┌──────────────────────────────────────────┐ │ PHASE 1: Common Trunk & Innovation │ Semesters 1 to 4 │ (Biomedical + Basic Medical Sciences) │ └────────────────────┬─────────────────────┘ ▼ ┌──────────────────────────────────────────┐ │ PHASE 2: Clinical-Technical Medicine │ Semesters 5 to 10 │ & Medical Engineering │ └────────────────────┬─────────────────────┘ ▼ ┌──────────────────────────────────────────┐ │ PHASE 3: Clinical Medicine & Externship │ Semesters 11 to 14 │ (Rotational Internship + Project) │ └────────────────────┬─────────────────────┘ ▼ ┌──────────────────────────────────────────┐ │ PHASE 4: Subspecialisation │ Semesters 15 to 18 │ (Paediatric Gynaecology + Bionano/Rob.) │ └──────────────────────────────────────────┘
+
+### Phase 1: Common Trunk and Biomedical Innovation (Semesters 1–4)
+* **Semester 1:** Differential and Integral Calculus; Integrated Molecular and Cellular Biology; General Human Anatomy and Dissection; Biomedical Engineering Fundamentals and Programming; Introduction to Paediatric Public Health.
+* **Semester 2:** Multivariable Calculus and Differential Equations; Specialised Human Histology and Embryology; Linear Algebra and Basic Biomedical Signals; Inorganic Chemistry and Human Biochemistry; General Biomechanical Physiology.
+* **Semester 3:** Electromagnetism and Biomedical Circuits; Genitourinary Embryogenesis and Development; Human Physiology I (Renal and Endocrine Systems); Soft Tissue Biomechanics and Biomaterials; Statistics and Quantitative Methods in Medicine.
+* **Semester 4:** Neurophysiology and Human Physiology II; Biosignals and Biomedical Instrumentation; Medical Microbiology, Parasitology and Immunology; Medical Genetics and Biomolecular Biotechnology; Computational Methods in Biomedical Engineering.
+
+### Phase 2: Clinical-Technical Medical Training (Semesters 5–10)
+* **Semester 5:** Pathological Anatomy and Paediatric Pathophysiology; Microcontrollers and Medical Biotechnology; General Pharmacology and Toxicology; Pelvic Biomechanics and Body Fluid Dynamics; Medical Semiology I: Clinical Propedics.
+* **Semester 6:** Paediatric Pharmacology and Biotransformation; Digital Medical Image Processing (Ultrasound, MRI, CT); Medical Semiology II and Surgical Diagnostics; Advanced Biomaterials and Tissue Engineering; Endocrine Genetics and Chromosomal Alterations.
+* **Semester 7:** Paediatrics I: Growth, Development and Neonatology; Paediatric Medical Devices and Regulatory Frameworks; General Endocrinology and Pubertal Development; Digital Health, Telemedicine and AI in Healthcare; Medical Ethics, Bioethics and Deontology.
+* **Semester 8:** Paediatrics II: Infectology and Paediatric Nutrition; Introduction to Human Gynaecology and Obstetrics; Gene Therapy and Surgical Molecular Biology; Advanced Surgical Instrumentation and Medical Robotics; Clinical Epidemiology and Trial Design.
+* **Semester 9:** General Paediatric Surgery and Minimally Invasive Techniques; Gynaecological Endocrinology from Childhood to Puberty; Biological Sensors and Point-of-Care Testing (PoCT); Gynaecological Pathology and Paediatric Oncology; Legal Medicine and Child Protection.
+* **Semester 10:** Advanced Diagnostic Imaging in Paediatric Gynaecology; Biomechanical Modelling of the Pelvic Floor and Surgical Meshes; Reproductive Health and Congenital Malformations Mapping; Research Methods and Medical Innovation; Prototyping Workshop and Customised Biomedical Devices.
+
+### Phase 3: Clinical Medicine and Biomedical Internship (Semesters 11–14)
+* **Semesters 11 & 12 (Rotational Medical Internship I):** Rotations through Paediatric Internal Medicine, Paediatric Surgery, General Obstetrics & Gynaecology, and Paediatric Emergencies/PICU.
+* **Semesters 13 & 14 (Biomedical Internship & Clinical Research II):** Rotations through Medical Biotechnology Development Labs, Centre for Minimal Invasion and Paediatric Robotic Surgery; Clinical-Engineering Integration for Complex Cases; Capstone Thesis Project (Applied Medical Device or Algorithm).
+
+### Phase 4: Advanced Specialisation in Paediatric and Adolescent Gynaecology (Semesters 15–18)
+* **Semester 15:** Genital Development Anomalies and DSD Variations; Ultra-Minimally Invasive Paediatric Gynaecological Endoscopy & Laparoscopy; Microfluidic Devices for Capillary Blood Hormone Assays; Comprehensive Management of Müllerian Anomalies.
+* **Semester 16:** Paediatric Gynaecological Oncology and Biocompatible Implants; Fertility Preservation in Paediatric Oncology Patients (Oncofertility); 3D Printing and Bioprinting of Reproductive Structures; Adolescent Gynaecology: Contraception and Bleeding Disorders.
+* **Semester 17:** Genitourinary Reconstructive Neonatal and Paediatric Surgery; AI Applied to Ultrasonic Screening of Neonatal Ovaries; Advanced Bioethics in Genetic and Reconstructive Interventions; Intensive Clinical Practice in Paediatric Gynaecology Unit.
+* **Semester 18:** International or Inter-institutional Rotation in Paediatric Robotic Surgery; Subspecialisation in Chronic Pelvic Pain and Adolescent Endometriosis; Health Technology Assessment (HTA) in Paediatric Gynaecology; Final Integrated Medical-Engineering Thesis Defence.
+
+### Graduate Profile and Core Competencies
+
+| Domain Area | Core Competency |
+| :--- | :--- |
+| **Diagnostics & Imaging** | Designs and interprets high-resolution Doppler ultrasound and reconstructed 3D CT/MRI for evaluating complex Müllerian malformations. |
+| **Surgical Mastery** | Executes miniaturised robotic and laparoscopic procedures tailored to the anatomical metrics of neonates, children, and adolescents. |
+| **Technological Innovation** | Engineers custom surgical instrumentation, biocompatible prosthetics, and biosensors for microscopic hormone detection. |
+| **Integrated Clinical Care** | Manages complex conditions (Precocious/Delayed Puberty, DSD, PCOS, Paediatric Ovarian Masses) with a combined clinical-engineering approach. |
+
 
 ## Proposed AI integration architecture
 
@@ -237,6 +313,9 @@ The following folders are an implementation target; they do not imply that the f
 │   ├── imaging/
 │   ├── robotics/
 │   └── simulation/
+├── curriculum/
+│   ├── dual-degree-biomed-med/
+│   └── paediatric-gynaecology/
 ├── ai/
 │   ├── model-gateway/
 │   ├── agents/
