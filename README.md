@@ -71,31 +71,59 @@ The proposed AI layer provides decision support for simulation and engineering t
 
 To support the interdisciplinary requirements of high-precision robotic surgery, pediatric bio-instrumentation, and specialized medical practice, this project embeds an integrated academic curriculum combining **Biomedical Engineering** and **Human Medicine with Specialisation in Paediatric and Adolescent Gynaecology**.
 
-┌──────────────────────────────────────────┐ │ PHASE 1: Common Trunk & Innovation │ Semesters 1 to 4 │ (Biomedical + Basic Medical Sciences) │ └────────────────────┬─────────────────────┘ ▼ ┌──────────────────────────────────────────┐ │ PHASE 2: Clinical-Technical Medicine │ Semesters 5 to 10 │ & Medical Engineering │ └────────────────────┬─────────────────────┘ ▼ ┌──────────────────────────────────────────┐ │ PHASE 3: Clinical Medicine & Externship │ Semesters 11 to 14 │ (Rotational Internship + Project) │ └────────────────────┬─────────────────────┘ ▼ ┌──────────────────────────────────────────┐ │ PHASE 4: Subspecialisation │ Semesters 15 to 18 │ (Paediatric Gynaecology + Bionano/Rob.) │ └──────────────────────────────────────────┘
+### Curriculum Progression
+
+```mermaid
+flowchart TD
+    P1["Phase 1: Common foundations"] --> P2["Phase 2: Clinical-technical training"]
+    P2 --> P3["Phase 3: Clinical and biomedical internships"]
+    P3 --> P4["Phase 4: Advanced specialisation"]
+```
+
+| Phase | Semesters | Curriculum focus |
+| --- | --- | --- |
+| 1 | 1–4 | Common trunk, basic medical sciences and biomedical innovation |
+| 2 | 5–10 | Clinical-technical medical training and medical engineering |
+| 3 | 11–14 | Clinical medicine, rotational medical internship, biomedical internship and capstone research |
+| 4 | 15–18 | Advanced specialisation in paediatric and adolescent gynaecology, biomedical technology and robotics |
+
+The diagram shows the four-phase progression. Semester details are listed below.
 
 ### Phase 1: Common Trunk and Biomedical Innovation (Semesters 1–4)
-* **Semester 1:** Differential and Integral Calculus; Integrated Molecular and Cellular Biology; General Human Anatomy and Dissection; Biomedical Engineering Fundamentals and Programming; Introduction to Paediatric Public Health.
-* **Semester 2:** Multivariable Calculus and Differential Equations; Specialised Human Histology and Embryology; Linear Algebra and Basic Biomedical Signals; Inorganic Chemistry and Human Biochemistry; General Biomechanical Physiology.
-* **Semester 3:** Electromagnetism and Biomedical Circuits; Genitourinary Embryogenesis and Development; Human Physiology I (Renal and Endocrine Systems); Soft Tissue Biomechanics and Biomaterials; Statistics and Quantitative Methods in Medicine.
-* **Semester 4:** Neurophysiology and Human Physiology II; Biosignals and Biomedical Instrumentation; Medical Microbiology, Parasitology and Immunology; Medical Genetics and Biomolecular Biotechnology; Computational Methods in Biomedical Engineering.
+
+| Semester / placement | Curriculum content |
+| --- | --- |
+| Semester 1 | Differential and Integral Calculus; Integrated Molecular and Cellular Biology; General Human Anatomy and Dissection; Biomedical Engineering Fundamentals and Programming; Introduction to Paediatric Public Health. |
+| Semester 2 | Multivariable Calculus and Differential Equations; Specialised Human Histology and Embryology; Linear Algebra and Basic Biomedical Signals; Inorganic Chemistry and Human Biochemistry; General Biomechanical Physiology. |
+| Semester 3 | Electromagnetism and Biomedical Circuits; Genitourinary Embryogenesis and Development; Human Physiology I (Renal and Endocrine Systems); Soft Tissue Biomechanics and Biomaterials; Statistics and Quantitative Methods in Medicine. |
+| Semester 4 | Neurophysiology and Human Physiology II; Biosignals and Biomedical Instrumentation; Medical Microbiology, Parasitology and Immunology; Medical Genetics and Biomolecular Biotechnology; Computational Methods in Biomedical Engineering. |
 
 ### Phase 2: Clinical-Technical Medical Training (Semesters 5–10)
-* **Semester 5:** Pathological Anatomy and Paediatric Pathophysiology; Microcontrollers and Medical Biotechnology; General Pharmacology and Toxicology; Pelvic Biomechanics and Body Fluid Dynamics; Medical Semiology I: Clinical Propedics.
-* **Semester 6:** Paediatric Pharmacology and Biotransformation; Digital Medical Image Processing (Ultrasound, MRI, CT); Medical Semiology II and Surgical Diagnostics; Advanced Biomaterials and Tissue Engineering; Endocrine Genetics and Chromosomal Alterations.
-* **Semester 7:** Paediatrics I: Growth, Development and Neonatology; Paediatric Medical Devices and Regulatory Frameworks; General Endocrinology and Pubertal Development; Digital Health, Telemedicine and AI in Healthcare; Medical Ethics, Bioethics and Deontology.
-* **Semester 8:** Paediatrics II: Infectology and Paediatric Nutrition; Introduction to Human Gynaecology and Obstetrics; Gene Therapy and Surgical Molecular Biology; Advanced Surgical Instrumentation and Medical Robotics; Clinical Epidemiology and Trial Design.
-* **Semester 9:** General Paediatric Surgery and Minimally Invasive Techniques; Gynaecological Endocrinology from Childhood to Puberty; Biological Sensors and Point-of-Care Testing (PoCT); Gynaecological Pathology and Paediatric Oncology; Legal Medicine and Child Protection.
-* **Semester 10:** Advanced Diagnostic Imaging in Paediatric Gynaecology; Biomechanical Modelling of the Pelvic Floor and Surgical Meshes; Reproductive Health and Congenital Malformations Mapping; Research Methods and Medical Innovation; Prototyping Workshop and Customised Biomedical Devices.
+
+| Semester / placement | Curriculum content |
+| --- | --- |
+| Semester 5 | Pathological Anatomy and Paediatric Pathophysiology; Microcontrollers and Medical Biotechnology; General Pharmacology and Toxicology; Pelvic Biomechanics and Body Fluid Dynamics; Medical Semiology I: Clinical Propedics. |
+| Semester 6 | Paediatric Pharmacology and Biotransformation; Digital Medical Image Processing (Ultrasound, MRI, CT); Medical Semiology II and Surgical Diagnostics; Advanced Biomaterials and Tissue Engineering; Endocrine Genetics and Chromosomal Alterations. |
+| Semester 7 | Paediatrics I: Growth, Development and Neonatology; Paediatric Medical Devices and Regulatory Frameworks; General Endocrinology and Pubertal Development; Digital Health, Telemedicine and AI in Healthcare; Medical Ethics, Bioethics and Deontology. |
+| Semester 8 | Paediatrics II: Infectology and Paediatric Nutrition; Introduction to Human Gynaecology and Obstetrics; Gene Therapy and Surgical Molecular Biology; Advanced Surgical Instrumentation and Medical Robotics; Clinical Epidemiology and Trial Design. |
+| Semester 9 | General Paediatric Surgery and Minimally Invasive Techniques; Gynaecological Endocrinology from Childhood to Puberty; Biological Sensors and Point-of-Care Testing (PoCT); Gynaecological Pathology and Paediatric Oncology; Legal Medicine and Child Protection. |
+| Semester 10 | Advanced Diagnostic Imaging in Paediatric Gynaecology; Biomechanical Modelling of the Pelvic Floor and Surgical Meshes; Reproductive Health and Congenital Malformations Mapping; Research Methods and Medical Innovation; Prototyping Workshop and Customised Biomedical Devices. |
 
 ### Phase 3: Clinical Medicine and Biomedical Internship (Semesters 11–14)
-* **Semesters 11 & 12 (Rotational Medical Internship I):** Rotations through Paediatric Internal Medicine, Paediatric Surgery, General Obstetrics & Gynaecology, and Paediatric Emergencies/PICU.
-* **Semesters 13 & 14 (Biomedical Internship & Clinical Research II):** Rotations through Medical Biotechnology Development Labs, Centre for Minimal Invasion and Paediatric Robotic Surgery; Clinical-Engineering Integration for Complex Cases; Capstone Thesis Project (Applied Medical Device or Algorithm).
+
+| Semester / placement | Curriculum content |
+| --- | --- |
+| Semesters 11 & 12 (Rotational Medical Internship I) | Rotations through Paediatric Internal Medicine, Paediatric Surgery, General Obstetrics & Gynaecology, and Paediatric Emergencies/PICU. |
+| Semesters 13 & 14 (Biomedical Internship & Clinical Research II) | Rotations through Medical Biotechnology Development Labs, Centre for Minimal Invasion and Paediatric Robotic Surgery; Clinical-Engineering Integration for Complex Cases; Capstone Thesis Project (Applied Medical Device or Algorithm). |
 
 ### Phase 4: Advanced Specialisation in Paediatric and Adolescent Gynaecology (Semesters 15–18)
-* **Semester 15:** Genital Development Anomalies and DSD Variations; Ultra-Minimally Invasive Paediatric Gynaecological Endoscopy & Laparoscopy; Microfluidic Devices for Capillary Blood Hormone Assays; Comprehensive Management of Müllerian Anomalies.
-* **Semester 16:** Paediatric Gynaecological Oncology and Biocompatible Implants; Fertility Preservation in Paediatric Oncology Patients (Oncofertility); 3D Printing and Bioprinting of Reproductive Structures; Adolescent Gynaecology: Contraception and Bleeding Disorders.
-* **Semester 17:** Genitourinary Reconstructive Neonatal and Paediatric Surgery; AI Applied to Ultrasonic Screening of Neonatal Ovaries; Advanced Bioethics in Genetic and Reconstructive Interventions; Intensive Clinical Practice in Paediatric Gynaecology Unit.
-* **Semester 18:** International or Inter-institutional Rotation in Paediatric Robotic Surgery; Subspecialisation in Chronic Pelvic Pain and Adolescent Endometriosis; Health Technology Assessment (HTA) in Paediatric Gynaecology; Final Integrated Medical-Engineering Thesis Defence.
+
+| Semester / placement | Curriculum content |
+| --- | --- |
+| Semester 15 | Genital Development Anomalies and DSD Variations; Ultra-Minimally Invasive Paediatric Gynaecological Endoscopy & Laparoscopy; Microfluidic Devices for Capillary Blood Hormone Assays; Comprehensive Management of Müllerian Anomalies. |
+| Semester 16 | Paediatric Gynaecological Oncology and Biocompatible Implants; Fertility Preservation in Paediatric Oncology Patients (Oncofertility); 3D Printing and Bioprinting of Reproductive Structures; Adolescent Gynaecology: Contraception and Bleeding Disorders. |
+| Semester 17 | Genitourinary Reconstructive Neonatal and Paediatric Surgery; AI Applied to Ultrasonic Screening of Neonatal Ovaries; Advanced Bioethics in Genetic and Reconstructive Interventions; Intensive Clinical Practice in Paediatric Gynaecology Unit. |
+| Semester 18 | International or Inter-institutional Rotation in Paediatric Robotic Surgery; Subspecialisation in Chronic Pelvic Pain and Adolescent Endometriosis; Health Technology Assessment (HTA) in Paediatric Gynaecology; Final Integrated Medical-Engineering Thesis Defence. |
 
 ### Graduate Profile and Core Competencies
 
@@ -105,7 +133,6 @@ To support the interdisciplinary requirements of high-precision robotic surgery,
 | **Surgical Mastery** | Executes miniaturised robotic and laparoscopic procedures tailored to the anatomical metrics of neonates, children, and adolescents. |
 | **Technological Innovation** | Engineers custom surgical instrumentation, biocompatible prosthetics, and biosensors for microscopic hormone detection. |
 | **Integrated Clinical Care** | Manages complex conditions (Precocious/Delayed Puberty, DSD, PCOS, Paediatric Ovarian Masses) with a combined clinical-engineering approach. |
-
 
 ## Proposed AI integration architecture
 
