@@ -6,47 +6,62 @@
 
 ## Table of Contents
 
-- [Overview](#overview)
-- [Project Status and Scope](#project-status-and-scope)
-- [Engineering Objectives](#engineering-objectives)
-- [Combined Dual-Degree Curriculum Architecture](#combined-dual-degree-curriculum-architecture)
-  - [Phase 1: Common Trunk and Biomedical Innovation](#phase-1-common-trunk-and-biomedical-innovation-semesters-14)
-  - [Phase 2: Clinical-Technical Medical Training](#phase-2-clinical-technical-medical-training-semesters-510)
-  - [Phase 3: Clinical Medicine and Biomedical Internship](#phase-3-clinical-medicine-and-biomedical-internship-semesters-1114)
-  - [Phase 4: Advanced Specialisation in Paediatric and Adolescent Gynaecology](#phase-4-advanced-specialisation-in-paediatric-and-adolescent-gynaecology-semesters-1518)
-  - [Graduate Profile and Core Competencies](#graduate-profile-and-core-competencies)
-- [Proposed AI Integration Architecture](#proposed-ai-integration-architecture)
-  - [Layer Responsibilities](#layer-responsibilities)
-  - [Safe Decision-Support Sequence](#safe-decision-support-sequence)
-- [Code-Level Integration Contract](#code-level-integration-contract)
-  - [Event and Data Contracts](#event-and-data-contracts)
-- [AI Capability Profiles](#ai-capability-profiles)
-- [Open-Source Technology Compendium](#open-source-technology-compendium)
-  - [Surgical Robotics and Simulation Candidates](#surgical-robotics-and-simulation-candidates)
-  - [Physiology, Biomechanics and Engineering Models](#physiology-biomechanics-and-engineering-models)
-  - [Imaging, Vision and Learning Candidates](#imaging-vision-and-learning-candidates)
-  - [Knowledge, Agents and Operations Candidates](#knowledge-agents-and-operations-candidates)
-  - [Interoperability and Data Standards](#interoperability-and-data-standards)
-- [Existing MBSE/CAS Assets](#existing-mbsecas-assets)
-- [Proposed Repository Structure](#proposed-repository-structure)
-- [Security, Privacy and Responsible AI](#security-privacy-and-responsible-ai)
-- [Installation and Reproducibility (Current Baseline)](#installation-and-reproducibility-current-baseline)
-- [Verification Strategy](#verification-strategy)
-- [Roadmap](#roadmap)
-- [Contribution Guidelines](#contribution-guidelines)
-- [Disclaimer](#disclaimer)
-- [Licensing and Provenance](#licensing-and-provenance)
-- [Source References](#source-references)
+- [1. Overview](#1-overview)
+- [2. Project status and scope](#2-project-status-and-scope)
+- [3. Engineering objectives](#3-engineering-objectives)
+- [4. Consolidated clinical overview of female self-exploration](#4-consolidated-clinical-overview-of-female-self-exploration)
+  - [4.1 Developmental interpretation and limits](#41-developmental-interpretation-and-limits)
+  - [4.2 Symptoms and differential assessment](#42-symptoms-and-differential-assessment)
+  - [4.3 Clinical review workflow](#43-clinical-review-workflow)
+  - [4.4 Communication, examination and safeguarding](#44-communication-examination-and-safeguarding)
+- [5. Female self-exploration and sexual-health education framework](#5-female-self-exploration-and-sexual-health-education-framework)
+  - [5.1 Age-appropriate learning and bodily autonomy](#51-age-appropriate-learning-and-bodily-autonomy)
+  - [5.2 Regional comparison and legal boundaries](#52-regional-comparison-and-legal-boundaries)
+  - [5.3 Integration into the simulation curriculum](#53-integration-into-the-simulation-curriculum)
+  - [5.4 Clinical and educational source register](#54-clinical-and-educational-source-register)
+- [6. Combined Dual-Degree Curriculum Architecture](#6-combined-dual-degree-curriculum-architecture)
+  - [6.1 Curriculum Progression](#61-curriculum-progression)
+  - [6.2 Phase 1: Common Trunk and Biomedical Innovation (Semesters 1–4)](#62-phase-1-common-trunk-and-biomedical-innovation-semesters-14)
+  - [6.3 Phase 2: Clinical-Technical Medical Training (Semesters 5–10)](#63-phase-2-clinical-technical-medical-training-semesters-510)
+  - [6.4 Phase 3: Clinical Medicine and Biomedical Internship (Semesters 11–14)](#64-phase-3-clinical-medicine-and-biomedical-internship-semesters-1114)
+  - [6.5 Phase 4: Advanced Specialisation in Paediatric and Adolescent Gynaecology (Semesters 15–18)](#65-phase-4-advanced-specialisation-in-paediatric-and-adolescent-gynaecology-semesters-1518)
+  - [6.6 Graduate Profile and Core Competencies](#66-graduate-profile-and-core-competencies)
+- [7. Proposed AI integration architecture](#7-proposed-ai-integration-architecture)
+  - [7.1 Layer responsibilities](#71-layer-responsibilities)
+  - [7.2 Safe decision-support sequence](#72-safe-decision-support-sequence)
+- [8. Code-level integration contract](#8-code-level-integration-contract)
+  - [8.1 Event and data contracts](#81-event-and-data-contracts)
+- [9. AI capability profiles](#9-ai-capability-profiles)
+- [10. Open-source technology compendium](#10-open-source-technology-compendium)
+  - [10.1 Surgical robotics and simulation candidates](#101-surgical-robotics-and-simulation-candidates)
+  - [10.2 Physiology, biomechanics and engineering models](#102-physiology-biomechanics-and-engineering-models)
+  - [10.3 Imaging, vision and learning candidates](#103-imaging-vision-and-learning-candidates)
+  - [10.4 Knowledge, agents and operations candidates](#104-knowledge-agents-and-operations-candidates)
+  - [10.5 Interoperability and data standards](#105-interoperability-and-data-standards)
+- [11. Existing MBSE/CAS assets](#11-existing-mbsecas-assets)
+- [12. Proposed repository structure](#12-proposed-repository-structure)
+- [13. Security, privacy and responsible AI](#13-security-privacy-and-responsible-ai)
+- [14. Installation and reproducibility (current baseline)](#14-installation-and-reproducibility-current-baseline)
+- [15. Verification strategy](#15-verification-strategy)
+- [16. Roadmap](#16-roadmap)
+- [17. Contribution guidelines](#17-contribution-guidelines)
+- [18. Disclaimer](#18-disclaimer)
+- [19. Licensing and provenance](#19-licensing-and-provenance)
+- [20. Source references](#20-source-references)
 
 ---
 
-## Overview
+<a id="overview"></a>
+
+## 1. Overview
 
 `jfxai4rss` brings together open and research-oriented technologies for surgical robotics, medical simulation, image guidance, physiological modelling, biomechanics, reinforcement learning, and 3D/VR training. The goal is to provide a traceable engineering workspace in which a surgical procedure can be modelled, simulated, evaluated, and improved without coupling the project to one vendor, one robot, or one inference provider.
 
 The proposed AI layer provides decision support for simulation and engineering teams. It can retrieve approved knowledge, inspect simulation state, generate test hypotheses, explain model outputs, and prepare reproducible experiment configurations. It must not directly actuate a physical surgical robot, issue an autonomous clinical order, or be presented as a validated medical device without a separate regulatory, clinical, cybersecurity, and human-factors programme.
 
-## Project status and scope
+<a id="project-status-and-scope"></a>
+
+## 2. Project status and scope
 
 | Area | Current repository baseline | Proposed extension |
 | --- | --- | --- |
@@ -57,7 +72,9 @@ The proposed AI layer provides decision support for simulation and engineering t
 | Runtime | No single production runtime is asserted by the current repository | Local workstation, research cluster and controlled enterprise profiles with reproducible deployments |
 | Safety | Research and training scope | Non-actuating defaults, de-identification, auditability, uncertainty thresholds and explicit review gates |
 
-## Engineering objectives
+<a id="engineering-objectives"></a>
+
+## 3. Engineering objectives
 
 1. **Model the system before implementation.** Keep requirements, architecture, interfaces, simulation assets and verification scenarios connected through MBSE artefacts.
 2. **Make AI replaceable.** Access local, private-cloud or approved hosted models through one policy-aware gateway rather than embedding provider-specific calls in simulation code.
@@ -68,129 +85,128 @@ The proposed AI layer provides decision support for simulation and engineering t
 7. **Keep the compendium modular.** Each upstream project is an optional candidate until its API, licence, maintenance status, performance and safety impact have been verified.
 
 
-# Consolidated Clinical, Psychological & Regional Analysis on Early Self-Exploration and Sexual Health Frameworks
+<a id="consolidated-clinical-overview-of-female-self-exploration"></a>
 
----
+## 4. Consolidated clinical overview of female self-exploration
 
-## 1. Multidimensional Determinants of Early Self-Exploration / Masturbatory Behavior in Young Girls
+This educational synthesis concerns childhood body exploration and adolescent health literacy. It is intended for supervised curriculum development, not automated diagnosis or instructions for sexual activity. The cited materials are professional guidance, not a systematic review or a collection of primary studies. Source review: 27 September 2026.
 
-In clinical pediatrics, child psychology, and developmental sociology, early or precocious masturbatory behavior in young girls is evaluated through a multi-factor lens. While self-exploration can be a normative part of psychosexual development, intense, early, or compulsive manifestations are often driven by specific environmental, socio-economic, and cultural influences.
+<a id="developmental-interpretation-and-limits"></a>
 
-### A. Socio-Economic Factors & Household Overcrowding
-* **Unfiltered Exposure to Adult Sexuality:** In contexts of severe household overcrowding—where multiple family members share a single room or sleeping area—young girls are involuntarily exposed to parental or adult sexual activity. This acts as an unbuffered stimulus that may trigger imitation or physical responses without the cognitive maturity to process them.
-* **Lack of Spatial Boundaries:** The absence of physical privacy in overpopulated dwellings disrupts the natural development of personal boundaries, causing self-exploration to occur in shared or non-demarcated spaces.
-* **Somatic Coping & Emotional Self-Regulation:** In environments characterized by high socio-economic stress or family instability, repetitive self-stimulation often functions as a non-sexual coping mechanism—providing a dopamine-driven, automatic strategy for anxiety relief and emotional self-soothing.
+### 4.1 Developmental interpretation and limits
 
-### B. Environmental & Climatic Conditions
-* **Light Clothing & Tactile Awareness:** In tropical or consistently warm climates, the use of minimal clothing and increased skin-to-skin or surface contact heightens physical self-awareness and opportunities for accidental or intentional tactile stimulation.
-* **Hygiene & Local Irritations:** High heat and humidity can lead to vulvar irritation, sweat dermatitis, or pediatric vaginitis. In young children, the resulting discomfort or itching frequently prompts scratching or rubbing, which may inadvertently produce pleasurable sensations that become reinforced over time.
+Body touching can occur during ordinary childhood development. Self-stimulation alone does not establish abuse. Easily redirected behaviour without harm or distress generally calls for calm guidance about privacy rather than punishment. Persistent disruption, injury, coercion or distress warrants professional assessment. These observations must be interpreted in context, not assigned an automatic diagnosis. [C1]
 
-### C. Psychological & Developmental Factors
-* **Stress Management & Attachment:** Children experiencing insecure attachment, separation anxiety, or intra-family distress may discover self-stimulation as a somatic mechanism to induce comfort in the absence of emotional containment.
-* **Trauma & Unregulated Exposure:** Compulsive, hypersexualized, or context-inappropriate masturbatory behavior in early childhood is a primary clinical indicator requiring immediate screening for **child sexual abuse/exploitation (CSAE)** or unsupervised exposure to explicit digital content.
-* **Normative Exploration vs. Compulsion:** Pediatric guidance distinguishes between intuitive, non-erotic childhood discovery (typically ages 2–6) and fixation that interferes with daily play, social interaction, or healthy development.
+<a id="symptoms-and-differential-assessment"></a>
 
-### D. Cultural Dynamics & Traditional Environments
-* **Taboos & Absence of Sexual Health Literacy:** In highly conservative or traditional societies, absolute silence regarding bodily anatomy prevents children from acquiring appropriate vocabulary for their bodies. Repression and guilt can paradoxically fixate attention on the body or drive exploration into secrecy.
-* **Seclusion & Gender Separation:** In environments where young girls are confined to domestic spaces with limited social outlets, boredom and isolation can increase focus on the body as an available source of sensory stimulation.
-* **Impact of Harmful Traditional Practices (e.g., FGM):** In regions where female genital mutilation or cutting persists, chronic tissue inflammation, scarring, or recurrent urinary tract infections can cause persistent physical discomfort, leading to frequent touching or rubbing of the pelvic area.
+### 4.2 Symptoms and differential assessment
 
----
+Itching or rubbing may accompany vulvovaginitis, irritant exposure, skin conditions or pinworms. Pain, urinary symptoms, discharge or bleeding require symptom-directed clinical assessment; touching alone does not identify an infection. [C2]
 
-## 2. Regional Models of Psychological Tolerance & Autonomous Sexual Health
+The earlier causal narratives about poverty, warm climates, clothing, culture and attachment are not retained as established explanations. Document relevant circumstances without stereotyping families or assuming a mechanism. Developmental observations, symptoms, possible stressors and safeguarding concerns may overlap.
 
-Conversely, several liberal jurisdictions and public health frameworks adopt a non-pathologizing, evidence-based approach to adolescent self-exploration and sexual wellness, provided it occurs within private, non-coercive settings.
+<a id="clinical-review-workflow"></a>
 
-### A. Regional Educational & Health Models
-* **Nordic Holistic Model (Sweden, Denmark, Norway, Finland):** Comprehensive Sexuality Education (CSE) integrates bodily self-knowledge into public school curricula from an early age. Self-exploration during adolescence is treated as a healthy, normative aspect of emotional regulation, bodily autonomy, and stress reduction.
-* **The Dutch Model (Netherlands & Belgium):** Emphasizes open dialogue within families and schools (*"Springboard Model"*). Psychological consensus holds that healthy, private self-awareness serves as a protective factor against future sexual coercion by teaching young people to establish clear personal boundaries.
-* **Central European Frameworks (Germany, Austria, Switzerland):** Sexology (*Sexualwissenschaft*) and clinical psychology differentiate strictly between healthy, private bodily autonomy and trauma-induced or compulsive behaviors.
+### 4.3 Clinical review workflow
 
-### B. Product Access & Legal/Psychological Boundaries
-* **Commercial vs. Private Boundaries:** While commercial sales of sexual wellness devices (vibrators, dildos) are strictly age-gated (18+) under consumer protection laws, clinical and legal standards in liberal European nations do not criminalize or pathologize the private use of personal wellness items by individuals who have reached the statutory **Age of Consent** (e.g., 14–15 years in Germany, Austria, Portugal, and the Nordic region).
-* **Pedagogical Principle:** Professional intervention prioritizes child protection, removal of stigma, and supportive guidance over moral punishment or shaming, ensuring that the child's psychological well-being and safety remain the paramount concern.
-
----
-
-## 3. Comparative Summary Matrix
-
-| Domain / Region | Primary Focus / Driving Factor | Clinical or Policy Stance |
-| :--- | :--- | :--- |
-| **Overcrowded / Low-Income Settings** | Involuntary adult exposure, stress, lack of spatial privacy | Address environmental stressors, screen for trauma/abuse, provide parental guidance. |
-| **Warm Climates & Hygiene Factors** | Dermatitis, humidity, light clothing, accidental friction | Treat underlying physical/dermatological causes; educate on body hygiene without shame. |
-| **Traditional / Conservative Contexts** | Taboos, domestic isolation, lack of anatomical vocabulary | Promote age-appropriate body safety education and protect against harmful traditional practices. |
-| **Nordic & Central European Models** | Comprehensive sex education, bodily autonomy, reduction of stigma | Normalize private self-exploration as a health/wellness factor for youth at/above Age of Consent. |
-
-
-# Comprehensive Clinical Overview: Primary Studies & Frameworks on Pediatric Female Self-Exploration
-
----
-
-## 1. Historical & Clinical Foundations of Early Self-Exploration
-
-In pediatric medicine, child psychiatry, and developmental psychology, the observation of early self-exploration in young girls—traditionally classified in early clinical literature as *infantile masturbation*, *gratification phenomena*, or *pediatric self-stimulation*—has evolved from pathologized views toward a nuanced, evidence-based diagnostic framework.
-
-### A. Early Psychoanalytic & Developmental Models
-* **Normative Psychosexual Stages:** Early developmental theories (from Freud to Erikson and Piaget) identified childhood bodily exploration as an intuitive discovery phase, typically occurring between ages 2 and 6, devoid of adult erotization or cognitive intent.
-* **Somatic Discovery:** Modern pediatric neuroscience classifies early touching as a natural sensory-motor feedback loop where infants and toddlers map their nervous system, body boundaries, and pleasurable/calming somatosensory responses.
-
----
-
-## 2. Primary Clinical Classifications & Differential Diagnosis
-
-To prevent improper pathologization while ensuring child protection, clinical protocols establish three distinct categories for pediatric self-stimulation:
-
-```mermaid
-graph TD
-    A["Pediatric Self-Exploration Presentation"] --> B["1. Normative / Developmental"]
-    A --> C["2. Somatic / Physiological Trigger"]
-    A --> D["3. Compulsive / Trauma-Induced"]
-
-    B --> B1["Intermittent, easily distracted, occurs during rest/play, no distress"]
-    C --> C1["Triggered by dermatological irritation, UTIs, parasites, or tight clothing"]
-    D --> D1["Frequent, rhythmic, difficult to interrupt, accompanied by distress, anxiety, or social withdrawal"]
-```
-
-### A. Normative / Developmental Self-Exploration
-
--   **Characteristics:** Occasional, gentle, easily redirected, occurring in private or natural resting moments without emotional distress or fixation.
-
--   **Clinical Stance:** Requires no medical or behavioral intervention; parents are advised to provide gentle guidance regarding privacy boundaries without shaming or punishment.
-
-### B. Secondary / Organic Triggers
-
--   **Dermatological & Gynecological Causes:** Pediatric vulvovaginitis, contact dermatitis (soaps, detergents), or diaper rash.
-
--   **Parasitic & Urinary Conditions:** Enterobiasis (*Enterobius vermicularis* / pinworms), which causes severe nocturnal anal and vulvar pruritus, leading to repetitive rubbing.
-
--   **Action Plan:** Medical evaluation and targeted treatment of the underlying infection or skin condition.
-
-### C. Compulsive, Precocious, or Reactive Self-Stimulation
-
--   **Triggers:** High environmental anxiety, emotional neglect, attachment disruption, or a coping response to severe domestic stress.
-
--   **Red Flags for Abuse or Unregulated Exposure:** Sudden onset of hypersexualized behaviors, explicit adult-like posturing, or compulsive fixation that interferes with daily functioning requires immediate screening for **child sexual abuse/exploitation (CSAE)** or unmonitored access to explicit media.
-
-## 3\. Clinical & Pedagogical Management Protocol
-
-| **Domain** | **Recommended Clinical / Parental Strategy** | **Prohibited / Counterproductive Actions** |
-| --- | --- | --- |
-| **Pedagogical Communication** | Teach clear, neutral anatomical names for genitalia; explain privacy gently (distinguishing public vs. private spaces). | Punishing, scolding, shaming, or using fear-based warnings. |
-| **Emotional Regulation** | Address underlying stress, offer alternative sensory/play activities, and strengthen emotional containment. | Ignoring sudden behavioral shifts or sudden compulsive fixations. |
-| **Medical Protocol** | Perform routine physical exams to rule out pinworms, UTIs, or local inflammation. | Prescribing unnecessary psychiatric medication for non-compulsive normative behaviors. |
-
-## Combined Dual-Degree Curriculum Architecture
-
-To support the interdisciplinary requirements of high-precision robotic surgery, pediatric bio-instrumentation, and specialized medical practice, this project embeds an integrated academic curriculum combining **Biomedical Engineering** and **Human Medicine with Specialisation in Paediatric and Adolescent Gynaecology**.
-
-### Curriculum Progression
+The following is a proposed educational routing diagram, not a validated triage algorithm. Its branches may coexist.
 
 ```mermaid
 flowchart TD
-    P1["Phase 1: Common foundations"] --> P2["Phase 2: Clinical-technical training"]
-    P2 --> P3["Phase 3: Clinical and biomedical internships"]
-    P3 --> P4["Phase 4: Advanced specialisation"]
+    O["Reported concern"] --> R["Qualified contextual review"]
+    R --> S{"Immediate safety concern?"}
+    S -->|Yes| U["Urgent care or safeguarding pathway"]
+    S -->|No| P{"Physical symptoms present?"}
+    P -->|Yes| M["Symptom-directed medical assessment"]
+    P -->|No| B{"Distress or functional disruption?"}
+    B -->|Yes| C["Developmental and psychosocial assessment"]
+    B -->|No| G["Privacy guidance and observation"]
+    M --> F["Document review and follow-up"]
+    C --> F
+    G --> F
+    F --> R
 ```
+
+<a id="communication-examination-and-safeguarding"></a>
+
+### 4.4 Communication, examination and safeguarding
+
+| Area | Educational guidance |
+| --- | --- |
+| Caregiver communication | Use neutral anatomical language, explain privacy and redirect calmly without shame. [C1] |
+| Clinical examination | A clinician should determine whether examination is needed, explain its purpose, obtain consent and minimise distress. Routine internal vaginal examination or internal swabs are not appropriate in prepubescent children. [C2] |
+| Concerning behaviour | Consider interference with activities, inability to redirect, pain, aggression or coercion when deciding on professional review. These are concerns to assess, not proof of a particular cause. [C1] |
+| Project safeguarding | Use the institution's qualified safeguarding pathway for a disclosure or suspected harm; the AI must not conduct an investigative interview or infer abuse from a behavioural label. |
+
+<a id="female-self-exploration-and-sexual-health-education-framework"></a>
+
+## 5. Female self-exploration and sexual-health education framework
+
+<a id="age-appropriate-learning-and-bodily-autonomy"></a>
+
+### 5.1 Age-appropriate learning and bodily autonomy
+
+WHO describes comprehensive sexuality education as incremental, scientifically accurate and age-appropriate. Early learning centres on bodies, emotions, relationships, boundaries and safety rather than sexual activity. Adolescent education adds puberty, menstrual health, consent, health services and informed choices. [C3]
+
+For this project, female self-exploration is discussed through body awareness, privacy, symptom recognition and help-seeking. No learner should be required to disclose personal intimate behaviour or demonstrate it in a classroom, simulator or assessment.
+
+<a id="regional-comparison-and-legal-boundaries"></a>
+
+### 5.2 Regional comparison and legal boundaries
+
+Replace broad labels such as a uniform “Nordic”, “Dutch” or “Central European” model with a source-based review of each specific curriculum. WHO notes that implementation and access vary; national reputation is not evidence of a particular programme's content or outcomes. [C3]
+
+The previous blanket claims about product sales, private use and age-of-consent thresholds are removed because they lacked jurisdiction-specific sources. This framework makes no determination of those laws. Legal consent rules, clinical need, education policy and commercial access must be reviewed as separate questions.
+
+| Comparison dimension | Evidence required before adding a regional claim |
+| --- | --- |
+| Curriculum | Issuing authority, version, age group, learning objectives and implementation setting |
+| Clinical service | Professional guideline, intended population and referral pathway |
+| Legal provision | Exact jurisdiction, current legal text, scope and qualified interpretation |
+| Reported outcome | Study design, sample, measurement, uncertainty and applicability |
+
+<a id="integration-into-the-simulation-curriculum"></a>
+
+### 5.3 Integration into the simulation curriculum
+
+Use synthetic cases for communication, recognition of uncertainty and appropriate referral. This module does not justify an invasive procedure or create an indication for robotic surgery.
+
+```mermaid
+flowchart TD
+    E["Approved clinical and educational sources"] --> D["Synthetic scenario draft"]
+    D --> R["Clinical and safeguarding review"]
+    R --> A{"Suitable for learner group?"}
+    A -->|No| D
+    A -->|Yes| T["Supervised communication exercise"]
+    T --> F["Feedback against explicit rubric"]
+    F --> Q{"Content revision needed?"}
+    Q -->|Yes| D
+    Q -->|No| V["Versioned teaching package"]
+```
+
+The proposed assessment rubric covers respectful language, recognition of missing evidence, privacy and escalation. Do not score a learner's personal sexual history. Clinical content needs named reviewer approval and source-version tracking before release.
+
+<a id="clinical-and-educational-source-register"></a>
+
+### 5.4 Clinical and educational source register
+
+| ID | Source | Evidence type and scope |
+| --- | --- | --- |
+| C1 | [American Academy of Pediatrics: Sexual Behaviors in Young Children](https://www.healthychildren.org/English/ages-stages/preschool/Pages/Sexual-Behaviors-Young-Children.aspx) | Caregiver guidance, updated 17 April 2023; developmental observations and reasons for professional review |
+| C2 | [Royal Children's Hospital: Vulval and vaginal conditions](https://www.rch.org.au/clinicalguide/guideline_index/Vulval_and_vaginal_conditions/) | Clinical practice guideline; symptom assessment and examination boundaries |
+| C3 | [WHO: Comprehensive sexuality education](https://www.who.int/news-room/fact-sheets/detail/comprehensive-sexuality-education) | Public-health synthesis, 11 March 2026; age-appropriate education and implementation evidence |
+
+<a id="combined-dual-degree-curriculum-architecture"></a>
+
+## 6. Combined Dual-Degree Curriculum Architecture
+
+To support the interdisciplinary requirements of high-precision robotic surgery, pediatric bio-instrumentation, and specialized medical practice, this project proposes an integrated academic curriculum combining **Biomedical Engineering** and **Human Medicine with Specialisation in Paediatric and Adolescent Gynaecology**.
+
+<a id="curriculum-progression"></a>
+
+### 6.1 Curriculum Progression
+
+The four-phase sequence below is a proposed curriculum map. Degree recognition, clinical placements and specialist accreditation require approval by the responsible institutions and authorities.
 
 | Phase | Semesters | Curriculum focus |
 | --- | --- | --- |
@@ -199,9 +215,11 @@ flowchart TD
 | 3 | 11–14 | Clinical medicine, rotational medical internship, biomedical internship and capstone research |
 | 4 | 15–18 | Advanced specialisation in paediatric and adolescent gynaecology, biomedical technology and robotics |
 
-The diagram shows the four-phase progression. Semester details are listed below.
+Semester details are listed below.
 
-### Phase 1: Common Trunk and Biomedical Innovation (Semesters 1–4)
+<a id="phase-1-common-trunk-and-biomedical-innovation-semesters-14"></a>
+
+### 6.2 Phase 1: Common Trunk and Biomedical Innovation (Semesters 1–4)
 
 | Semester / placement | Curriculum content |
 | --- | --- |
@@ -210,7 +228,9 @@ The diagram shows the four-phase progression. Semester details are listed below.
 | Semester 3 | Electromagnetism and Biomedical Circuits; Genitourinary Embryogenesis and Development; Human Physiology I (Renal and Endocrine Systems); Soft Tissue Biomechanics and Biomaterials; Statistics and Quantitative Methods in Medicine. |
 | Semester 4 | Neurophysiology and Human Physiology II; Biosignals and Biomedical Instrumentation; Medical Microbiology, Parasitology and Immunology; Medical Genetics and Biomolecular Biotechnology; Computational Methods in Biomedical Engineering. |
 
-### Phase 2: Clinical-Technical Medical Training (Semesters 5–10)
+<a id="phase-2-clinical-technical-medical-training-semesters-510"></a>
+
+### 6.3 Phase 2: Clinical-Technical Medical Training (Semesters 5–10)
 
 | Semester / placement | Curriculum content |
 | --- | --- |
@@ -221,14 +241,18 @@ The diagram shows the four-phase progression. Semester details are listed below.
 | Semester 9 | General Paediatric Surgery and Minimally Invasive Techniques; Gynaecological Endocrinology from Childhood to Puberty; Biological Sensors and Point-of-Care Testing (PoCT); Gynaecological Pathology and Paediatric Oncology; Legal Medicine and Child Protection. |
 | Semester 10 | Advanced Diagnostic Imaging in Paediatric Gynaecology; Biomechanical Modelling of the Pelvic Floor and Surgical Meshes; Reproductive Health and Congenital Malformations Mapping; Research Methods and Medical Innovation; Prototyping Workshop and Customised Biomedical Devices. |
 
-### Phase 3: Clinical Medicine and Biomedical Internship (Semesters 11–14)
+<a id="phase-3-clinical-medicine-and-biomedical-internship-semesters-1114"></a>
+
+### 6.4 Phase 3: Clinical Medicine and Biomedical Internship (Semesters 11–14)
 
 | Semester / placement | Curriculum content |
 | --- | --- |
 | Semesters 11 & 12 (Rotational Medical Internship I) | Rotations through Paediatric Internal Medicine, Paediatric Surgery, General Obstetrics & Gynaecology, and Paediatric Emergencies/PICU. |
 | Semesters 13 & 14 (Biomedical Internship & Clinical Research II) | Rotations through Medical Biotechnology Development Labs, Centre for Minimal Invasion and Paediatric Robotic Surgery; Clinical-Engineering Integration for Complex Cases; Capstone Thesis Project (Applied Medical Device or Algorithm). |
 
-### Phase 4: Advanced Specialisation in Paediatric and Adolescent Gynaecology (Semesters 15–18)
+<a id="phase-4-advanced-specialisation-in-paediatric-and-adolescent-gynaecology-semesters-1518"></a>
+
+### 6.5 Phase 4: Advanced Specialisation in Paediatric and Adolescent Gynaecology (Semesters 15–18)
 
 | Semester / placement | Curriculum content |
 | --- | --- |
@@ -237,7 +261,9 @@ The diagram shows the four-phase progression. Semester details are listed below.
 | Semester 17 | Genitourinary Reconstructive Neonatal and Paediatric Surgery; AI Applied to Ultrasonic Screening of Neonatal Ovaries; Advanced Bioethics in Genetic and Reconstructive Interventions; Intensive Clinical Practice in Paediatric Gynaecology Unit. |
 | Semester 18 | International or Inter-institutional Rotation in Paediatric Robotic Surgery; Subspecialisation in Chronic Pelvic Pain and Adolescent Endometriosis; Health Technology Assessment (HTA) in Paediatric Gynaecology; Final Integrated Medical-Engineering Thesis Defence. |
 
-### Graduate Profile and Core Competencies
+<a id="graduate-profile-and-core-competencies"></a>
+
+### 6.6 Graduate Profile and Core Competencies
 
 | Domain Area | Core Competency |
 | :--- | :--- |
@@ -246,7 +272,9 @@ The diagram shows the four-phase progression. Semester details are listed below.
 | **Technological Innovation** | Engineers custom surgical instrumentation, biocompatible prosthetics, and biosensors for microscopic hormone detection. |
 | **Integrated Clinical Care** | Manages complex conditions (Precocious/Delayed Puberty, DSD, PCOS, Paediatric Ovarian Masses) with a combined clinical-engineering approach. |
 
-## Proposed AI integration architecture
+<a id="proposed-ai-integration-architecture"></a>
+
+## 7. Proposed AI integration architecture
 
 ```mermaid
 flowchart TB
@@ -258,7 +286,9 @@ flowchart TB
     E --> G
 ```
 
-### Layer responsibilities
+<a id="layer-responsibilities"></a>
+
+### 7.1 Layer responsibilities
 
 | Layer | Responsibility | Candidate open-source building blocks | Status |
 | --- | --- | --- | --- |
@@ -270,7 +300,9 @@ flowchart TB
 | Simulation and MBSE/CAS | Execute deterministic models, expose state snapshots, calculate metrics and retain artefacts | Existing `MBSE/CAS` Draw.io, Modelio and Papyrus assets plus selected simulators | Existing artefacts plus adapters |
 | Evidence and operations | Metrics, traces, lineage, experiment registry, audit, incident review and reproducibility | OpenTelemetry, Prometheus, Grafana, MLflow or an equivalent registry | Proposed integration |
 
-### Safe decision-support sequence
+<a id="safe-decision-support-sequence"></a>
+
+### 7.2 Safe decision-support sequence
 
 ```mermaid
 sequenceDiagram
@@ -291,7 +323,9 @@ sequenceDiagram
 
 The default path is advisory and non-actuating. A tool call that could change a patient record, simulator baseline, robot command, or regulated configuration must be separately permissioned and normally require human approval.
 
-## Code-level integration contract
+<a id="code-level-integration-contract"></a>
+
+## 8. Code-level integration contract
 
 The following interfaces are an implementation proposal, not a claim that these classes already exist in the repository. They keep AI, simulation, and external standards loosely coupled:
 
@@ -331,7 +365,9 @@ Every implementation should expose a stable descriptor, input/output schema, cap
 }
 ```
 
-### Event and data contracts
+<a id="event-and-data-contracts"></a>
+
+### 8.1 Event and data contracts
 
 Use versioned JSON/Avro/Protobuf contracts or equivalent schemas for events such as:
 
@@ -346,7 +382,9 @@ Use versioned JSON/Avro/Protobuf contracts or equivalent schemas for events such
 
 Suggested lifecycle states are `DRAFT`, `REVIEW_REQUIRED`, `APPROVED_FOR_SIMULATION`, `RUNNING`, `COMPLETED`, `REJECTED`, `QUARANTINED` and `AUDITED`. An idempotency key such as `(case_id, experiment_id, tool_version, input_hash)` prevents duplicate experiments.
 
-## AI capability profiles
+<a id="ai-capability-profiles"></a>
+
+## 9. AI capability profiles
 
 | Profile | Allowed capabilities | Deployment guidance |
 | --- | --- | --- |
@@ -356,11 +394,15 @@ Suggested lifecycle states are `DRAFT`, `REVIEW_REQUIRED`, `APPROVED_FOR_SIMULAT
 | Imaging research assistant | Propose segmentations, registrations or quality checks for human review | DICOM-aware sandbox; independent quantitative validation before any clinical interpretation |
 | Robotics integration assistant | Inspect ROS 2/OpenIGTLink messages and verify interface contracts | Read-only by default; command publication disabled unless a separately approved test harness enables it |
 
-## Open-source technology compendium
+<a id="open-source-technology-compendium"></a>
+
+## 10. Open-source technology compendium
 
 The compendium below consolidates the projects named in the original description and adds integration candidates required by the proposed architecture. A listed project is not automatically a dependency. Before adoption, verify the upstream licence, release health, API stability, security posture, hardware assumptions and suitability for the intended research or training context.
 
-### Surgical robotics and simulation candidates
+<a id="surgical-robotics-and-simulation-candidates"></a>
+
+### 10.1 Surgical robotics and simulation candidates
 
 | Project or family | Intended role in the platform | Integration boundary |
 | --- | --- | --- |
@@ -376,7 +418,9 @@ The compendium below consolidates the projects named in the original description
 | ROS-MED / ROS 2 ecosystem | Robotic middleware and message transport | Read-only telemetry bridge first; allow-list topics and message types |
 | Surgeyos | Hardware, mechanical, electronic, software and AI reference ecosystem | Requirements and interface references; verify exact upstream components |
 
-### Physiology, biomechanics and engineering models
+<a id="physiology-biomechanics-and-engineering-models"></a>
+
+### 10.2 Physiology, biomechanics and engineering models
 
 | Project or family | Intended role | Integration boundary |
 | --- | --- | --- |
@@ -387,7 +431,9 @@ The compendium below consolidates the projects named in the original description
 | ModelFLOWs-cardiac | High-fidelity cardiac blood-flow/CFD studies | Batch experiment adapter; retain mesh, solver, boundary conditions and seed |
 | Computational modelling of biomechanics and biotribology | Existing CAS design artefact | Link MBSE requirements to simulation scenarios and verification evidence |
 
-### Imaging, vision and learning candidates
+<a id="imaging-vision-and-learning-candidates"></a>
+
+### 10.3 Imaging, vision and learning candidates
 
 | Project or family | Intended role | Integration boundary |
 | --- | --- | --- |
@@ -397,7 +443,9 @@ The compendium below consolidates the projects named in the original description
 | MONAI | Medical-imaging preprocessing, training and evaluation patterns | DICOM-aware research pipeline; de-identification before inference |
 | ONNX Runtime | Portable inference for approved models | Model-format gateway with checksum and hardware profile |
 
-### Knowledge, agents and operations candidates
+<a id="knowledge-agents-and-operations-candidates"></a>
+
+### 10.4 Knowledge, agents and operations candidates
 
 | Project or family | Intended role | Integration boundary |
 | --- | --- | --- |
@@ -410,7 +458,9 @@ The compendium below consolidates the projects named in the original description
 | MLflow or equivalent | Experiment and model registry | Store model revision, dataset reference, metrics and approval state |
 | Open Policy Agent or equivalent | Policy-as-code for access and tool execution | Enforce data classification, role, environment and risk controls |
 
-### Interoperability and data standards
+<a id="interoperability-and-data-standards"></a>
+
+### 10.5 Interoperability and data standards
 
 | Standard | Use |
 | --- | --- |
@@ -421,7 +471,9 @@ The compendium below consolidates the projects named in the original description
 | FMI / Modelica exchange | Coupling physiology, mechanics and control models where the simulator supports it |
 | JSON Schema, Avro or Protobuf | Versioned internal contracts and event validation |
 
-## Existing MBSE/CAS assets
+<a id="existing-mbsecas-assets"></a>
+
+## 11. Existing MBSE/CAS assets
 
 The current repository contains the following design artefacts under `MBSE/CAS`:
 
@@ -436,7 +488,9 @@ The current repository contains the following design artefacts under `MBSE/CAS`:
 
 The proposed AI work should add requirements, interfaces, threat models, data classifications, simulation scenarios and verification links to these artefacts instead of creating an isolated AI diagram.
 
-## Proposed repository structure
+<a id="proposed-repository-structure"></a>
+
+## 12. Proposed repository structure
 
 The following folders are an implementation target; they do not imply that the folders already exist:
 
@@ -482,7 +536,9 @@ The following folders are an implementation target; they do not imply that the f
 └── README.md
 ```
 
-## Security, privacy and responsible AI
+<a id="security-privacy-and-responsible-ai"></a>
+
+## 13. Security, privacy and responsible AI
 
 - Use synthetic or de-identified data for examples and training. Do not place direct identifiers or unrestricted clinical narratives in prompts, logs or vector stores.
 - Apply least privilege and separate research, training, staging and production-like environments.
@@ -493,7 +549,9 @@ The following folders are an implementation target; they do not imply that the f
 - Keep robot-command publication disabled in the default profile. Any future actuation study requires a physically isolated test rig, independent safety controller, emergency stop, qualified reviewers and a separate approval record.
 - Publish an SBOM and review the licence and security posture of every dependency, model, dataset, container and hardware SDK.
 
-## Installation and reproducibility (current baseline)
+<a id="installation-and-reproducibility-current-baseline"></a>
+
+## 14. Installation and reproducibility (current baseline)
 
 The current repository is primarily a design and modelling workspace; it does not advertise one complete runnable application or clinical deployment. To inspect the baseline:
 
@@ -504,7 +562,9 @@ cd jfxai4rss
 
 Open the Draw.io files with a compatible Draw.io desktop/web release and open the Modelio/Papyrus projects with their corresponding tools. Proposed adapters and AI services should add their own pinned environment, test fixtures, sample data policy, and reproducible command sequence before being described as supported.
 
-## Verification strategy
+<a id="verification-strategy"></a>
+
+## 15. Verification strategy
 
 1. **Contract tests:** validate DICOM/FHIR/ROS 2/OpenIGTLink and simulation schemas against versioned fixtures.
 2. **Determinism tests:** run identical experiments with fixed seeds and compare state hashes, metrics and exported artefacts.
@@ -514,7 +574,9 @@ Open the Draw.io files with a compatible Draw.io desktop/web release and open th
 6. **Security tests:** scan dependencies and containers, test prompt-injection resistance, verify access policies and inspect audit completeness.
 7. **Traceability review:** link every safety-relevant requirement to an implementation element, test, result and reviewer decision in the MBSE/CAS record.
 
-## Roadmap
+<a id="roadmap"></a>
+
+## 16. Roadmap
 
 | Phase | Deliverable | Exit evidence |
 | --- | --- | --- |
@@ -527,19 +589,27 @@ Open the Draw.io files with a compatible Draw.io desktop/web release and open th
 | 6. Training pilot | Deliver a non-clinical scenario with instructor controls | Safety review, usability results and incident playbook |
 | 7. Extended validation | Consider additional modalities or controlled hardware research | Separate regulatory, clinical, cybersecurity and ethics approvals |
 
-## Contribution guidelines
+<a id="contribution-guidelines"></a>
+
+## 17. Contribution guidelines
 
 Contributions should state whether a change is implemented, experimental or architectural. Include the affected contract, threat model, upstream version, licence, test evidence and reproducibility instructions. New AI tools must declare their capabilities, data access, side effects, timeout, failure behaviour and human-review requirement.
 
-## Disclaimer
+<a id="disclaimer"></a>
+
+## 18. Disclaimer
 
 This project is intended for open-source engineering research, education, simulation and training. It is not medical advice, a diagnostic system, a treatment recommendation, a certified medical device, or a substitute for qualified clinical, safety, regulatory or ethics review. The presence of an upstream project in this compendium does not imply endorsement, interoperability, maintenance, certification or clinical suitability.
 
-## Licensing and provenance
+<a id="licensing-and-provenance"></a>
+
+## 19. Licensing and provenance
 
 The inspected repository baseline did not expose a root `LICENSE` file. Add a project licence before distributing original code, and preserve the notices and licences of every upstream project. “Open source” does not mean that all models, datasets, dependencies, containers or hardware SDKs share the same terms. Record exact versions, source URLs, checksums where practical, attribution and an SBOM for each release.
 
-## Source references
+<a id="source-references"></a>
+
+## 20. Source references
 
 - [jfxai4rss repository](https://github.com/robotics-intelligent-systems/jfxai4rss)
 - [DICOM standard](https://www.dicomstandard.org/)
